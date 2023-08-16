@@ -1,17 +1,10 @@
-document.getElementById('btn-apply').addEventListener('click',function(){
-    const priceField = document.getElementById('price-field');
-    const priceString = priceField.innerText;
-    const price = parseFloat(priceString);
-
-    const newPrice =(price - (price * (30 / 100)));
-
-    const payablePrice = document.getElementById('payable');
-    payablePrice.innerText = newPrice;
+document.getElementById('btn-apply').addEventListener('click', function () {
+    const newTotalAmount = getAmount('price-field');
+    const discountedAmount = getDiscountAmount(newTotalAmount);
+    setTextElementValueById('payable',discountedAmount);  
 })
 
-document.getElementById('btn-pay').addEventListener('click',function(){
-    alert('Payment Success');
-
-    const payablePrice = document.getElementById('payable');
-    payablePrice.innerText = '00';
+document.getElementById('btn-pay').addEventListener('click', function () {
+    alertMessage();
+    setTextElementValueById('payable','00')  
 })
